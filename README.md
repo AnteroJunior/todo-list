@@ -7,6 +7,13 @@
 - [ ] MySQL
 
 
+## Features
+
+- [] Login/Register 🚧
+- [] CRUD tasks 🚧
+- [] Pomodoro Clock 🚧
+- [] Background music player 🚧
+
 ## Author
 
 **Antero Arcanjo**
