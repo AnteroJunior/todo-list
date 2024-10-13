@@ -4,16 +4,12 @@ import './login.css';
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-const UserCredentials = z.object({
-    email: z.string().email({ message: "Email inválido" }),
-    password: z.string().min(8, { message: "Senha inválida" }),
-});
+import { LoginCredentials } from "../../interfaces/User/user-form.interfaces";
 
 export const Login: React.FunctionComponent = (): JSX.Element => {
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<z.infer<typeof UserCredentials>>({
-        resolver: zodResolver(UserCredentials),
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<z.infer<typeof LoginCredentials>>({
+        resolver: zodResolver(LoginCredentials),
         mode: 'onChange',
         defaultValues: {
             email: '',
@@ -22,7 +18,7 @@ export const Login: React.FunctionComponent = (): JSX.Element => {
         criteriaMode: 'firstError',
     });
 
-    const onSubmit: SubmitHandler<z.infer<typeof UserCredentials>> = (data: z.infer<typeof UserCredentials>): void => {
+    const onSubmit: SubmitHandler<z.infer<typeof LoginCredentials>> = (data: z.infer<typeof LoginCredentials>): void => {
         console.log(data);
         reset();
     }
@@ -46,6 +42,7 @@ export const Login: React.FunctionComponent = (): JSX.Element => {
 
                 <button className="rounded-full bg-[#09b99d] text-white font-bold py-2">Login</button>
                 <p className="text-sm text-black font-medium text-center cursor-pointer">Forgot password?</p>
+                <p className="text-sm text-black font-medium text-center cursor-pointer">Don't have an account? <a href="/register" className="text-[#09b99d]">Register</a></p>
             </form>
         </div>
     );
